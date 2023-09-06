@@ -8,6 +8,13 @@ const createZodSchema = z.object({
   }),
 });
 
+const updateZodSchema = z.object({
+  body: z.object({
+    title: z.string().optional(),
+  }),
+});
+
 export const CategoryValidation = {
   createZodSchema,
+  updateZodSchema,
 };
