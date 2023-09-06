@@ -14,3 +14,16 @@ export type IGenericErrorResponse = {
   message: string;
   errorMessages: IGenericErrorMessage[];
 };
+
+export type ILoginRequest = {
+  email: string;
+  password: string;
+};
+export type ILoginResponse = {
+  accessToken: string;
+  refreshToken?: string;
+};
+
+export type IRefreshTokenResponse = {
+  accessToken: string;
+};
