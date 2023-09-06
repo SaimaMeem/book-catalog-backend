@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post(
   '/create-category',
-  // auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   validateRequest(CategoryValidation.createZodSchema),
   CategoryController.createCategory
 );
