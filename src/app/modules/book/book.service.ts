@@ -100,11 +100,13 @@ const getAllBooks = async (
     where: whereConditions,
   });
 
+  const totalPage = Math.ceil(total / limit);
   return {
     meta: {
       total,
       page,
       limit,
+      totalPage,
     },
     data: result,
   };
@@ -134,12 +136,13 @@ const getAllBooksByCategory = async (
   const total = await prisma.book.count({
     where: whereConditions,
   });
-
+  const totalPage = Math.ceil(total / limit);
   return {
     meta: {
       total,
       page,
       limit,
+      totalPage,
     },
     data: result,
   };
