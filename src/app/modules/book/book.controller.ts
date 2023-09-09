@@ -38,6 +38,30 @@ const getAllBooks = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getAllBooksByCategory = catchAsync(
+  async (req: Request, res: Response) => {
+    const { categoryId } = req.params;
+    const options = pick(req.query, [
+      'size',
+      'limit',
+      'page',
+      'sortBy',
+      'sortOrder',
+    ]);
+    if (options.size) {
+      options.limit = options.size;
+    }
+
+    const result = await BookService.getAllBooksByCategory(categoryId, options);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Books retrieved successfully',
+      data: result,
+    });
+  }
+);
+
 const getSingleBook = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const result = await BookService.getSingleBook(id);
@@ -74,6 +98,7 @@ const deleteBook = catchAsync(async (req: Request, res: Response) => {
 export const BookController = {
   createBook,
   getAllBooks,
+  getAllBooksByCategory,
   getSingleBook,
   updateBook,
   deleteBook,
