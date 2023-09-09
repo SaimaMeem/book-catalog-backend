@@ -6,6 +6,9 @@ import { IOrder } from './order.interface';
 const createOrder = async (data: IOrder) => {
   const result = await prisma.order.create({
     data,
+    include: {
+      user: true,
+    },
   });
   return result;
 };
@@ -19,6 +22,9 @@ const getAllOrders = async (loggedUser: any): Promise<Order[] | null> => {
   }
   const result = await prisma.order.findMany({
     where: whereConditions,
+    include: {
+      user: true,
+    },
   });
   return result;
 };
@@ -36,6 +42,9 @@ const getSingleOrder = async (
   const result = await prisma.order.findFirst({
     where: {
       AND: whereConditions,
+    },
+    include: {
+      user: true,
     },
   });
 

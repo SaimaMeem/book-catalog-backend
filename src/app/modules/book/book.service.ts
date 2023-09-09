@@ -14,6 +14,9 @@ import { IBookFilterRequest } from './book.interface';
 const createBook = async (data: Book) => {
   const result = await prisma.book.create({
     data,
+    include: {
+      category: true,
+    },
   });
   return result;
 };
