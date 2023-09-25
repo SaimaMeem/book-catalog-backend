@@ -4,5 +4,5 @@ export type IOrder = {
     bookId: string;
     quantity: number;
   };
-  status?: 'PENDING' | 'SHIPPED' | 'DELIVERED';
+  status?: 'pending' | 'shipped' | 'delivered';
 };

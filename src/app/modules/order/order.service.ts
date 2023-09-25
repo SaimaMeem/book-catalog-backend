@@ -15,7 +15,7 @@ const createOrder = async (data: IOrder) => {
 
 const getAllOrders = async (loggedUser: any): Promise<Order[] | null> => {
   let whereConditions = {};
-  if (loggedUser.role === 'CUSTOMER') {
+  if (loggedUser.role === 'customer') {
     whereConditions = {
       userId: loggedUser.id,
     };
@@ -35,7 +35,7 @@ const getSingleOrder = async (
 ): Promise<Order | null> => {
   const whereConditions: any[] = [{ id }];
 
-  if (loggedUser.role === 'CUSTOMER') {
+  if (loggedUser.role === 'customer') {
     whereConditions.push({ userId: loggedUser.id });
   }
 

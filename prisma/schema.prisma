@@ -26,8 +26,8 @@ model User {
 }
 
 enum Role {
-  ADMIN
-  CUSTOMER
+  admin
+  customer
 }
 
 model Category {
@@ -69,13 +69,15 @@ model Order {
   userId       String
   user         User        @relation(fields: [userId], references: [id])
   orderedBooks Json
-  status       OrderStatus @default(PENDING)
+  status       OrderStatus @default(pending)
   createdAt    DateTime    @default(now())
+
+  @@map("orders")
 }
 
 enum OrderStatus {
-  PENDING
-  SHIPPED
-  DELIVERED
+  pending
+  shipped
+  delivered
 }
 
