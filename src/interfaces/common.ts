@@ -21,8 +21,7 @@ export type ILoginRequest = {
   password: string;
 };
 export type ILoginResponse = {
-  accessToken: string;
-  refreshToken?: string;
+  token: string;
 };
 
 export type IRefreshTokenResponse = {
