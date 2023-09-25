@@ -23,7 +23,3 @@ export type ILoginRequest = {
 export type ILoginResponse = {
   token: string;
 };
-
-export type IRefreshTokenResponse = {
-  accessToken: string;
-};
